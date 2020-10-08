@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Paper-Rock-Scissors</title>
+</head>
+<body>
+  <script>
+
+let myArray = ["rock", "paper", "scissors"];
+let computerSelectionOne = computerPlayOne();
+let computerSelectionTwo = computerPlayTwo();
+let computerSelectionThree = computerPlayThree();
+let computerSelectionFour = computerPlayFour();
+let computerSelectionFive = computerPlayFive();
+const playerSelection = prompt("What is your choice?").toLowerCase();
+let playerScore = 0;
+let computerScore = 0;
+
+
+
+function computerPlayOne() {
+  return myArray[Math.floor(Math.random() * myArray.length)];
+}
+function computerPlayTwo() {
+  return myArray[Math.floor(Math.random() * myArray.length)];
+}
+function computerPlayThree() {
+  return myArray[Math.floor(Math.random() * myArray.length)];
+}
+function computerPlayFour() {
+  return myArray[Math.floor(Math.random() * myArray.length)];
+}
+function computerPlayFive() {
+  return myArray[Math.floor(Math.random() * myArray.length)];
+}
+
+
+
+function playRound(computerSelection, playerSelection) {
+  if ((computerSelection == "rock") && (playerSelection == "paper")) {
+    console.log("You Win! Paper Beats Rock!");
+    playerScore++
+  } else if ((computerSelection == "rock") && (playerSelection == "scissors")) {
+    console.log("You Lose! Rock Beats Paper!");
+    computerScore++
+  } else if ((computerSelection == "paper") && (playerSelection == "scissors")) {
+    console.log("You win! Scissors Beats Paper!");
+    playerScore++
+  } else if ((computerSelection == "paper") && (playerSelection == "rock")) {
+    console.log("You Lose! Paper Beats Rock!");
+    computerScore++
+  } else if ((computerSelection == "scissors") && (playerSelection == "rock")) {
+    console.log("You Win! Rock Beats Scissors");
+    playerScore++
+  } else if ((computerSelection == "scissors") && (playerSelection == "paper")) {
+    console.log("You Lose! Scissors Beats Paper!");
+    computerScore++
+  } else {
+    console.log("It's a Tie!");
+  }
+}
+
+function game() {
+  playRound(computerSelectionOne, playerSelection);
+  playRound(computerSelectionTwo, playerSelection);
+  playRound(computerSelectionThree, playerSelection);
+  playRound(computerSelectionFour, playerSelection);
+  playRound(computerSelectionFive, playerSelection);
+  if (playerScore > computerScore) {
+      alert("You Win!");
+  } else {
+      alert("You Lose!")
+  }
+}
+
+ game();
+
+</script>
+</body>
+</html>
+
+

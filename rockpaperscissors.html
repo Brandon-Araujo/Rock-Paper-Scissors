@@ -17,8 +17,6 @@ const playerSelection = prompt("What is your choice?").toLowerCase();
 let playerScore = 0;
 let computerScore = 0;
 
-
-
 function computerPlayOne() {
   return myArray[Math.floor(Math.random() * myArray.length)];
 }
@@ -34,8 +32,6 @@ function computerPlayFour() {
 function computerPlayFive() {
   return myArray[Math.floor(Math.random() * myArray.length)];
 }
-
-
 
 function playRound(computerSelection, playerSelection) {
   if ((computerSelection == "rock") && (playerSelection == "paper")) {
@@ -64,13 +60,33 @@ function playRound(computerSelection, playerSelection) {
 function game() {
   playRound(computerSelectionOne, playerSelection);
   playRound(computerSelectionTwo, playerSelection);
+  if ((computerScore == 2) && (playerScore < 2)) {
+  alert("You Lose!");
+  return;
+} else if ((playerScore == 2) && (computerScore < 2)) {
+  alert("You Win!");
+  return;
+}
   playRound(computerSelectionThree, playerSelection);
+  if ((computerScore >= 2) && (playerScore < 2)) {
+  alert("You Lose!");
+  return;
+} else if ((playerScore >= 2) && (computerScore < 2)) {
+  alert("You Win!")
+  return;
+} else if ((playerScore == 1) && (computerScore < 1)){
+  alert("You Win!");
+  return;
+} else if ((computerScore == 1) && (playerScore < 1)) {
+  alert("You Lose!");
+  return;
+  }
   playRound(computerSelectionFour, playerSelection);
   playRound(computerSelectionFive, playerSelection);
-  if (playerScore > computerScore) {
-      alert("You Win!");
-  } else {
-      alert("You Lose!")
+  if (computerScore > playerScore) {
+    alert("You Lose!");
+} else if (playerScore > computerScore) {
+    alert("You Win!");
   }
 }
 

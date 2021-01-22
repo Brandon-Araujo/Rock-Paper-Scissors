@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <title>Paper-Rock-Scissors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="endcontainer">
+    <div class ="topcontainer">
+      <h1 id="refreshText" class="refreshText"></h1>
+    </div>    
+    <div class="gameContainer">
+      <div class="playerContainer">
+        <div class="playerimage">
+          <img class="playerlogo" src="playerimage.jpg">
+        </div>  
+        <div class="playerName">
+          <h2 class="nameText">Player</h2>
+        </div>
+        <div class = "btns">
+          <button id="rock" class="btnThree">Rock</button>
+          <button id="paper" class="btnTwo">Paper</button>
+          <button id="scissors" class="btnOne">Scissors</button>
+        </div>
+        <div class="computerimage">
+          <img class="computerlogo" src="computerimage.jpg">
+        </div>
+        <div class="computerName">
+          <h2 class="computerText">Computer</h2>
+        </div>
+        <div class="computerSelection">
+          <h1 id="cSelect" class="computerSelectText"></h1>
+        </div>
+      </div>
+      <div class="resultsContainer">
+        <div class="results" id="results">
+          <h2 class="resultsText"></h2>
+        </div>
+        <div id="Score" class="Score">
+          <h1 id="pScore" class="pScore">Player Score: </h1>
+          <h1 id="cScore" class="pScore">Computer Score: </h1>
+        </div>
+        <div class="winLose">
+          <h1 id="winLoseText" class="winLoseText"></h1>
+        </div>
+      </div>
+    </div>
+
+<script>
+
+let myArray = ["rock", "paper", "scissors"];
+let computerSelection = computerPlay();
+let playerScore = 0;
+let computerScore = 0;
+
+function computerPlay() { 
+  return myArray[Math.floor(Math.random() * myArray.length)];
+}
+
+
+function playRound(computerSelection, playerSelection) {
+    computerPlay();
+    cSelect.textContent = computerSelection;
+    console.log(computerSelection);
+    console.log(playerSelection);
+  if ((computerSelection == "rock") && (playerSelection == "paper")) {
+    txt.textContent = "Paper Beats Rock!"
+    playerScore++
+    pScore.textContent = "Player Score: " + playerScore
+  } else if ((computerSelection == "rock") && (playerSelection == "scissors")) {
+    txt.textContent = "Rock Beats Scissors!"
+    computerScore++
+    cScore.textContent = "Computer Score: " + computerScore
+  } else if ((computerSelection == "paper") && (playerSelection == "scissors")) {
+    txt.textContent = "Scissors Beats Paper!"
+    playerScore++
+    pScore.textContent = "Player Score: " + playerScore
+  } else if ((computerSelection == "paper") && (playerSelection == "rock")) {
+    txt.textContent = "Paper Beats Rock!"
+    computerScore++
+    cScore.textContent = "Computer Score: " + computerScore
+  } else if ((computerSelection == "scissors") && (playerSelection == "rock")) {
+    txt.textContent = "Rock Beats Scissors"
+    playerScore++
+    pScore.textContent  = "Player Score: " + playerScore
+  } else if ((computerSelection == "scissors") && (playerSelection == "paper")) {
+    txt.textContent = "Scissors Beats Paper!"
+    computerScore++
+    cScore.textContent = "Computer Score: " + computerScore
+  } else {
+    txt.textContent = "Tie!"
+  }
+  if (playerScore >= 3) {
+            winLoseText.textContent = "YOU WIN!"
+            refreshText.textContent = "REFRESH PAGE TO PLAY AGAIN"
+        } else if (computerScore >= 3) {
+            winLoseText.textContent = "YOU LOSE!"
+            refreshText.textContent = "REFRESH PAGE TO PLAY AGAIN"
+        }
+}
+
+const btn = document.querySelectorAll('button');
+
+btn.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(computerPlay(), button.id);
+    });
+});
+
+let txt = document.querySelector('#results');
+let pScore = document.querySelector('#pScore');
+let cScore = document.querySelector('#cScore');
+let select = document.querySelector('#cSelect');
+let winLoseText = document.querySelector('#winLoseText');
+let refreshText = document.querySelector('#refreshText');
+
+
+
+</script>
+</body>
+</html>
+
+
